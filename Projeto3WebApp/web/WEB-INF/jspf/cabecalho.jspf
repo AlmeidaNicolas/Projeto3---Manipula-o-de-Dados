@@ -1,0 +1,13 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div style="border: solid 1px red;">
+    <span>AreaDoMenu</span>
+    <div style="border: solid 1px blue;">
+        <h1>LogoDoSite</h1>
+    </div>
+    <div style="border: solid 1px blue;">
+        <a href="CadastroEmpresas.jsp">Empresas</a>
+        <a href="CadastroEmpresas.jsp">Pessoas</a>
+        <a href="CadastroEmpresas.jsp">Veículos</a>
+    </div>
+</div>

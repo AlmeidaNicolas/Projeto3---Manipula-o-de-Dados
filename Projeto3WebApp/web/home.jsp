@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
+        <div style="border: solid 1px red;">
+            <label>ConteúdoDoSite</label>
+        </div>
     </body>
 </html>
