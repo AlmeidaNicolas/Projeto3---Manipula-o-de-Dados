@@ -1,13 +1,17 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<div style="border: solid 1px red;">
-    <span>AreaDoMenu</span>
+<header style="border: solid 1px red;">
+    <span>Area do menu.</span>
     <div style="border: solid 1px blue;">
-        <h1>LogoDoSite</h1>
+        <h1>Logo do site</h1>
     </div>
+    <br/><!--Apenas para termos uma melhor visualização-->
     <div style="border: solid 1px blue;">
-        <a href="CadastroEmpresas.jsp">Empresas</a>
-        <a href="CadastroEmpresas.jsp">Pessoas</a>
-        <a href="CadastroEmpresas.jsp">Veículos</a>
+        <a href="home.jsp">Home</a> |
+        <a href="CadastroPessoas.jsp">Pessoas</a> |
+        <a href="CadastroVeiculos.jsp">Veículos</a> |
+        <a href="CadastroEmpresas.jsp">Empresas</a>   
     </div>
-</div>
+    <br><!--Apenas para termos uma melhor visualização-->
+</header>
+<br/>
