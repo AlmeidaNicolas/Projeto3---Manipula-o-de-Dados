@@ -4,6 +4,8 @@
     Author     : Leona
 --%>
 
+<%@page import="br.com.fatecpg.manutencaoCadastro.Db"%>
+<%@page import="br.com.fatecpg.manutencaoCadastro.Pessoa"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,10 +22,51 @@
                     <label>Conteúdo do cadastro de pessoas.</label>
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
+                        
+                        <%if(request.getParameter("alterar")!=null){%>
+                        <form>
+                            <p>ALTERAR</p>
+                            Nome: <input type="text" name="nome"/>
+                        </form>
+                        <%}%>
+                        <%if(request.getParameter("remover")!=null){%>
+                        <form>
+                            <p>REMOVER</p>
+                            index: 
+                            Nome: <input type="text" name="nome"/>
+                        </form>
+                        <%}%>
+                        
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
                         <label>Tabela para a exibição dos dados.</label>
+                        
+                        <table border="1">
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <td><button>Adicionar outro</button></td>
+                            </tr>
+                            <%for(Pessoa p: Db.getPessoa()){%>
+                            <tr>
+                                <td><%= p.getNome()%></td>
+                                <td><%= p.getCpf()%></td>
+                                <td><%= p.getEmail()%></td>
+                                <td><%= p.getTelefone()%></td>
+                                <%int i = Db.getPessoa().indexOf(p);%>
+                                <td>
+                                    <form method="POST">
+                                        <a href="CadastroPessoas.jsp?alterar=<%=i%>"><input type="button" value="Alterar"/></a>
+                                        <a href="CadastroPessoas.jsp?remover=<%=i%>"><input type="button" value="Remover"/></a>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%}%>
+                        </table>
+                        
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                 </div>
