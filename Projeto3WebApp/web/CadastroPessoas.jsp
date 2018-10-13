@@ -23,17 +23,76 @@
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
                         
-                        <%if(request.getParameter("alterar")!=null){%>
-                        <form>
+                        <%if(request.getParameter("alterar")!=null){
+                            int posicao = Integer.parseInt(request.getParameter("alterar"));
+                            Pessoa p = Db.getPessoa().get(posicao);
+                            
+                            if(request.getParameter("btnAlterar")!=null){
+                                p.setDados(request.getParameter("nome"), request.getParameter("cpf"), 
+                                        request.getParameter("email"), request.getParameter("telefone"));
+                                Db.getPessoa().set(posicao, p);
+                                response.sendRedirect("CadastroPessoas.jsp");
+                            }
+                        %>
+                        <form method="POST">
                             <p>ALTERAR</p>
-                            Nome: <input type="text" name="nome"/>
+                            <table>
+                                <tr>
+                                    <td><label>Nome:</label></td>
+                                    <td><input type="text" name="nome" value="<%=p.getNome()%>"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CPF:</label></td>
+                                    <td><input type="text" name="cpf" value="<%=p.getCpf()%>"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><input type="text" name="email" value="<%=p.getEmail()%>"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><input type="text" name="telefone" value="<%=p.getTelefone()%>"/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="btnAlterar" value="Alterar" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                         <%}%>
-                        <%if(request.getParameter("remover")!=null){%>
-                        <form>
+                        
+                        <%if(request.getParameter("remover")!=null){
+                            int posicao = Integer.parseInt(request.getParameter("remover"));
+                            Pessoa p = Db.getPessoa().get(posicao);
+                        %>
+                        <form method="POST">
                             <p>REMOVER</p>
-                            index: 
-                            Nome: <input type="text" name="nome"/>
+                            <table>
+                                <tr>
+                                    <td><label>Nome:</label></td>
+                                    <td><label><%=p.getNome()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CPF:</label></td>
+                                    <td><label><%=p.getCpf()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><label><%=p.getEmail()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><label><%=p.getTelefone()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="btnRemover" value="Remover" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                         <%}%>
                         
