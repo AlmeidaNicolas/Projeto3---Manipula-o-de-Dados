@@ -22,7 +22,48 @@
                     <label>Conteúdo do cadastro de pessoas.</label>
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
-                        
+                        <!--**********BLOCO QUE ADICIONA UM CADASTRO*********-->
+                        <%if(request.getParameter("adicionar")!=null){    
+                            if(request.getParameter("btnAdicionar")!=null){
+                                String nome = request.getParameter("nome");
+                                String cpf = request.getParameter("cpf");
+                                String email = request.getParameter("email");
+                                String telefone = request.getParameter("telefone");
+                                Pessoa p = new Pessoa();
+                                p.setDados(nome, cpf, email, telefone);
+                                Db.getPessoa().add(p);
+                                response.sendRedirect("CadastroPessoas.jsp");
+                            }
+                        %>
+                        <form method="POST">
+                            <p>ADICIONAR</p>
+                            <table>
+                                <tr>
+                                    <td><label>Nome:</label></td>
+                                    <td><input type="text" name="nome" required/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CPF:</label></td>
+                                    <td><input type="text" name="cpf" required/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><input type="text" name="email" required/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><input type="text" name="telefone" required/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="btnAdicionar" value="Adicionar" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                        <%}%>
+                        <!--***********BLOCO QUE ALTERA UM CADASTRO**********-->
                         <%if(request.getParameter("alterar")!=null){
                             int posicao = Integer.parseInt(request.getParameter("alterar"));
                             Pessoa p = Db.getPessoa().get(posicao);
@@ -39,19 +80,19 @@
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
-                                    <td><input type="text" name="nome" value="<%=p.getNome()%>"/></td>
+                                    <td><input type="text" name="nome" value="<%=p.getNome()%>" required/></td>
                                 </tr>
                                 <tr>
                                     <td><label>CPF:</label></td>
-                                    <td><input type="text" name="cpf" value="<%=p.getCpf()%>"/></td>
+                                    <td><input type="text" name="cpf" value="<%=p.getCpf()%>" required/></td>
                                 </tr>
                                 <tr>
                                     <td><label>E-mail:</label></td>
-                                    <td><input type="text" name="email" value="<%=p.getEmail()%>"/></td>
+                                    <td><input type="text" name="email" value="<%=p.getEmail()%>" required/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Telefone:</label></td>
-                                    <td><input type="text" name="telefone" value="<%=p.getTelefone()%>"/></td>
+                                    <td><input type="text" name="telefone" value="<%=p.getTelefone()%>" required/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -62,10 +103,14 @@
                             </table>
                         </form>
                         <%}%>
-                        
+                        <!--***********BLOCO QUE REMOVE UM CADASTRO**********-->
                         <%if(request.getParameter("remover")!=null){
                             int posicao = Integer.parseInt(request.getParameter("remover"));
                             Pessoa p = Db.getPessoa().get(posicao);
+                            if(request.getParameter("btnRemover")!=null){
+                                Db.getPessoa().remove(p);
+                                response.sendRedirect("CadastroPessoas.jsp");
+                            }
                         %>
                         <form method="POST">
                             <p>REMOVER</p>
@@ -95,7 +140,6 @@
                             </table>
                         </form>
                         <%}%>
-                        
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
@@ -107,7 +151,11 @@
                                 <th>CPF</th>
                                 <th>E-mail</th>
                                 <th>Telefone</th>
-                                <td><button>Adicionar outro</button></td>
+                                <td>
+                                    <form>
+                                        <a href="CadastroPessoas.jsp?adicionar=1"><input type="button" value="Adicionar outro"/></a>
+                                    </form>
+                                </td>
                             </tr>
                             <%for(Pessoa p: Db.getPessoa()){%>
                             <tr>
@@ -125,7 +173,6 @@
                             </tr>
                             <%}%>
                         </table>
-                        
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                 </div>
