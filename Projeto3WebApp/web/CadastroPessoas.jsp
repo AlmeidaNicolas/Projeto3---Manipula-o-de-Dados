@@ -29,6 +29,18 @@
                                 String cpf = request.getParameter("cpf");
                                 String email = request.getParameter("email");
                                 String telefone = request.getParameter("telefone");
+                                String identificadorCpf=cpf.substring(9);
+                                cpf=cpf.substring(0, 9);
+                                for(int i=0; i<=7;i++){
+                                    if(i==3||i==7){
+                                        String aux;
+                                        aux=cpf.substring(i);
+                                        cpf=cpf.substring(0, i);
+                                        cpf+="."+aux;
+                                    }
+                                }
+                                cpf+="-"+identificadorCpf;
+                                
                                 Pessoa p = new Pessoa();
                                 p.setDados(nome, cpf, email, telefone);
                                 Db.getPessoa().add(p);
@@ -40,15 +52,15 @@
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
-                                    <td><input type="text" name="nome" required/></td>
+                                    <td><input type="text" name="nome" required autofocus/></td>
                                 </tr>
                                 <tr>
                                     <td><label>CPF:</label></td>
-                                    <td><input type="text" name="cpf" required/></td>
+                                    <td><input style="width: 97.5%;" type="number" name="cpf" min="10000000000" max="99999999999" required placeholder="Sem hífen ou pontos"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>E-mail:</label></td>
-                                    <td><input type="text" name="email" required/></td>
+                                    <td><input type="email" name="email" required placeholder="Ex: Joao@email.com"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Telefone:</label></td>
@@ -157,6 +169,11 @@
                                     </form>
                                 </td>
                             </tr>
+                            <%
+                                if(Db.getPessoa().isEmpty()){
+                                    %><td colspan="4"><label>Não existe nenhum cadastro de pessoas.</label></td><%
+                                }
+                            %>
                             <%for(Pessoa p: Db.getPessoa()){%>
                             <tr>
                                 <td><%= p.getNome()%></td>
