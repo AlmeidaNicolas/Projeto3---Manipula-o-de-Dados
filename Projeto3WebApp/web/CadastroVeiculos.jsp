@@ -20,7 +20,7 @@
                     <label>Conteúdo do cadastro de veículos.</label>
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
-                        <Form method="POST">
+                        <form method="POST">
                             <p>ADICIONAR</p>
                             <table>
                                 <tr>
@@ -46,9 +46,9 @@
                                     </td>
                                 </tr>
                             </table>
-                        </Form>
+                        </form>
                         <!--ALTERAR-->
-                        <Form method="POST">
+                        <form method="POST">
                             <p>ALTERAR</p>
                             <table>
                                 <tr>
@@ -74,7 +74,35 @@
                                     </td>
                                 </tr>
                             </table>
-                        </Form>
+                        </form>
+                        <!--REMOVER-->
+                        <form method="POST">
+                            <p>REMOVER</p>
+                            <table>
+                                <tr>
+                                    <td><label>Placa:</label></td>
+                                    <td><labe></labe></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Marca:</label></td>
+                                    <td><label></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Modelo:</label></td>
+                                    <td><label></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Cor:</label></td>
+                                    <td><label></label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" name="Remover" value="Remover"> 
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
