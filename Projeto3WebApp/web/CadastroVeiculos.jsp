@@ -47,6 +47,34 @@
                                 </tr>
                             </table>
                         </Form>
+                        <!--ALTERAR-->
+                        <Form method="POST">
+                            <p>ALTERAR</p>
+                            <table>
+                                <tr>
+                                    <td><label>Placa:</label></td>
+                                    <td><input type="text" name="nome" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Marca:</label></td>
+                                    <td><input type="text" name="marca" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Modelo:</label></td>
+                                    <td><input type="text" name="modelo" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Cor:</label></td>
+                                    <td><input type="text" name="cor" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" name="Alterar" value="Alterar"> 
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </Form>
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
