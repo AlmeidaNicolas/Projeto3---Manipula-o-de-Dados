@@ -35,4 +35,22 @@ public class Db {
         }
         return PESSOAS;
     }
+     public static ArrayList<Veiculo> getVeiculo(){
+        if(VEICULOS.isEmpty()){
+            Veiculo v1 = new Veiculo();
+            v1.setDados("QAA-333", "Fiat", "Urno", "Preto");
+            VEICULOS.add(v1);
+            
+            Veiculo v2 = new Veiculo();
+            v2.setDados("YPQ-444", "Volks", "Fox", "Vermelho");
+            VEICULOS.add(v2);
+            
+            Veiculo v3 = new Veiculo();
+            v3.setDados("VQX-555", "Honda", "Civic", "Prata");
+            VEICULOS.add(v3);
+            
+            
+        }
+        return VEICULOS;
+    }
 }
