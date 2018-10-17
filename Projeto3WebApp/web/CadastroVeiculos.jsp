@@ -20,6 +20,33 @@
                     <label>Conteúdo do cadastro de veículos.</label>
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
+                        <Form method="POST">
+                            <p>ADICIONAR</p>
+                            <table>
+                                <tr>
+                                    <td><label>Placa:</label></td>
+                                    <td><input type="text" name="nome"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Marca:</label></td>
+                                    <td><input type="text" name="marca"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Modelo:</label></td>
+                                    <td><input type="text" name="modelo"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Cor:</label></td>
+                                    <td><input type="text" name="cor"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" name="Adicionar" value="Adicionar"> 
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </Form>
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
