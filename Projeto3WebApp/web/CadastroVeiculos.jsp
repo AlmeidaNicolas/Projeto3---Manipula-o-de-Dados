@@ -107,6 +107,19 @@
                     <br><!--Apenas para termos uma melhor visualização-->
                     <div style="border: solid 1px blue;">
                         <label>Tabela para a exibição dos dados.</label>
+                        <table border="1">
+                            <tr>
+                                <th>Placa</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Cor</th>
+                                <td>
+                                    <form>
+                                        <a href="CadastroVeiculos.jsp?adicionar=1"><input type="button" value="Adicionar outro"/></a>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                 </div>
