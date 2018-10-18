@@ -16,19 +16,82 @@ html, body{
 	height: 100%
 }
 
+
 #conteudo{
-        /*border: solid 1px red;*/
+        /*border: solid 3px green;*/
 	min-height: 100%;
+        /*margin-bottom: 50px;*/
+        background-color: #4d4d4d;
 }
 #principal{
-        /*border: solid 1px blue;*/
-	overflow: auto;
-	/*padding-bottom: 50px;*/
+        /*border: solid 2px orange;*/
+	/*overflow: auto;*/
+	padding-bottom: 50px;
+}
+#areaCabecalho{
+    background-color: black;
+    height: 100px;
+}
+#areaMenu{
+    width: 900px;
+    margin: 0 auto;
+    /*border: solid 1px red;*/
+}
+#tituloSite{
+    color: white;
+    float: left;
+    margin: 16px 0;
+    font-size: 20px;
+    padding: 5px 10px;
+    
+}
+#titulo3pesonalizado{
+    border: solid 2px #e6e600;
+    padding: 0 5px;
+    border-radius: 0 10px;
+}
+#Menu{
+    float: right;
+    color: #e6e600;
+    margin: 40px 0;
+    font-size: 15px;
+    /*border: solid 1px red;*/
+}
+.botoesMenu{
+    text-decoration: none;
+    color: white;
+    padding: 0 5px;
+    /*border: solid 3px green;*/
+}
+.botoesMenu:hover{
+    color: lightgray;
+}
+#areaConteudo{
+    width: 950px;
+    margin: 10px auto;
+    padding: 20px 5px;
+    border-radius: 0 25px;
+    border: solid 3px #e6e600;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+.bloco{
+    display: inline-block;
+    vertical-align: top;
+}
+#formulario{
+    text-align: left;
+}
+#tabela{
+    text-align: left;
 }
 #rodape{
-	border: solid 1px red;
-	position: relative;
-	height: 50px;
-	margin-top: -50px;
-	clear: both;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    /*border: solid 1px red;*/
+    position: relative;
+    height: 50px;
+    margin-top: -50px;
+    clear: both;
 }

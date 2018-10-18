@@ -18,10 +18,10 @@
         <div id="conteudo">
             <div id="principal">
                 <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-                <div style="border: solid 1px red;">
-                    <label>Conteúdo do cadastro de pessoas.</label>
-                    <div style="border: solid 1px blue;">
-                        <label>Formulário para a entrada de dados.</label>
+                <div id="areaConteudo">
+                    
+                    <div class="bloco" id="formulario">
+                        
                         <!--**********BLOCO QUE ADICIONA UM CADASTRO*********-->
                         <%if(request.getParameter("adicionar")!=null){    
                             if(request.getParameter("btnAdicionar")!=null){
@@ -29,17 +29,7 @@
                                 String cpf = request.getParameter("cpf");
                                 String email = request.getParameter("email");
                                 String telefone = request.getParameter("telefone");
-                                String identificadorCpf=cpf.substring(9);
-                                cpf=cpf.substring(0, 9);
-                                for(int i=0; i<=7;i++){
-                                    if(i==3||i==7){
-                                        String aux;
-                                        aux=cpf.substring(i);
-                                        cpf=cpf.substring(0, i);
-                                        cpf+="."+aux;
-                                    }
-                                }
-                                cpf+="-"+identificadorCpf;
+                                
                                 
                                 Pessoa p = new Pessoa();
                                 p.setDados(nome, cpf, email, telefone);
@@ -52,11 +42,11 @@
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
-                                    <td><input type="text" name="nome" required autofocus/></td>
+                                    <td><input type="text" name="nome" required autofocus placeholder="Ex: João Silva"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>CPF:</label></td>
-                                    <td><input style="width: 97.5%;" type="number" name="cpf" min="10000000000" max="99999999999" required placeholder="Sem hífen ou pontos"/></td>
+                                    <td><input type="text" name="cpf" required placeholder="Ex: 123.456.789-12"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>E-mail:</label></td>
@@ -64,7 +54,7 @@
                                 </tr>
                                 <tr>
                                     <td><label>Telefone:</label></td>
-                                    <td><input type="text" name="telefone" required/></td>
+                                    <td><input type="text" name="telefone" required placeholder="Ex: (12)34567-8901"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -80,6 +70,9 @@
                             int posicao = Integer.parseInt(request.getParameter("alterar"));
                             Pessoa p = Db.getPessoa().get(posicao);
                             
+                            
+                            
+                            
                             if(request.getParameter("btnAlterar")!=null){
                                 p.setDados(request.getParameter("nome"), request.getParameter("cpf"), 
                                         request.getParameter("email"), request.getParameter("telefone"));
@@ -92,19 +85,19 @@
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
-                                    <td><input type="text" name="nome" value="<%=p.getNome()%>" required/></td>
+                                    <td><input type="text" name="nome" value="<%=p.getNome()%>" required autofocus placeholder="Ex: João Silva"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>CPF:</label></td>
-                                    <td><input type="text" name="cpf" value="<%=p.getCpf()%>" required/></td>
+                                    <td><input type="text" name="cpf" value="<%=p.getCpf()%>" required placeholder="Ex: 123.456.789-12"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>E-mail:</label></td>
-                                    <td><input type="text" name="email" value="<%=p.getEmail()%>" required/></td>
+                                    <td><input type="text" name="email" value="<%=p.getEmail()%>" required placeholder="Ex: Joao@email.com"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Telefone:</label></td>
-                                    <td><input type="text" name="telefone" value="<%=p.getTelefone()%>" required/></td>
+                                    <td><input type="text" name="telefone" value="<%=p.getTelefone()%>" required placeholder="Ex: (12)34567-8901"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -153,8 +146,7 @@
                         </form>
                         <%}%>
                     </div>
-                    <br><!--Apenas para termos uma melhor visualização-->
-                    <div style="border: solid 1px blue;">
+                    <div class="bloco" id="tabela" style="border: solid 1px blue;">
                         <label>Tabela para a exibição dos dados.</label>
                         
                         <table border="1">
@@ -191,7 +183,6 @@
                             <%}%>
                         </table>
                     </div>
-                    <br><!--Apenas para termos uma melhor visualização-->
                 </div>
             </div>
         </div>
