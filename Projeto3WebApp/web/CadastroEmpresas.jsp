@@ -48,7 +48,30 @@
             </form>
             
             <!--form e lógica para alteração de dados-->
-            
+            <%
+        int i = Integer.parseInt(request.getParameter("i"));
+        Empresa e = Db.getContatos().get(i);
+    %>
+    <body>
+        <h1>Cadastro de Contatos</h1>
+        <h2>Alterar</h2>
+        <%
+            if(request.getParameter("alterarContato")!=null){
+                c.setNome(request.getParameter("nome"));
+                c.setEmail(request.getParameter("email"));
+                c.setTelefone(request.getParameter("telefone"));
+                Db.getContatos().set(i, c);
+                response.sendRedirect("home.jsp");
+            }
+        %>
+        <form>
+            Índice: <%= i%><br/><br/>
+            <input type="hidden" name="i" value="<%=i%>"/>
+            Nome:<br/><input type="text" name="nome" value="<%=c.getNome()%>" required/><br/>
+            E-mail:<br/><input type="text" name="email" value="<%=c.getEmail()%>" required/><br/>
+            Telefone:<br/><input type="text" name="telefone" value="<%=c.getTelefone()%>" required/><br/>
+            <br/><input type="submit" name="alterarContato" value="Alterar">
+        </form>
             
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>

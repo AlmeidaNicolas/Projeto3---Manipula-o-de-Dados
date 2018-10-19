@@ -54,5 +54,24 @@ public class Db {
         return VEICULOS;
     }
      
+    public static ArrayList<Empresa> getEmpresas(){
+        if(EMPRESAS.isEmpty()){
+            Empresa e1 = new Empresa();
+            e1.setDados("Grupo Verdaz","Future Automóveis", "Mario Aquino","83.829.702/0032-88",
+                    "Avenida Tomás Albuquerque, n.332 - Vila Nova - Porto de Galinhas - PE", "verdaz@future.com", "(87)8856-1723");
+            EMPRESAS.add(e1);
+            
+            Empresa e2 = new Empresa();
+            e1.setDados("Rezarsh Corp","Rezarsh Motors", "Marcello Wolfgang","23.930.725/8722-01",
+                    "Alameda Moraes Moreira, n.777 - Alto Jardim - São Paulo - SP", "rezarch@wolf.com", "(11)99723-9723");
+            EMPRESAS.add(e2);
+            
+            Empresa e3 = new Empresa();
+            e1.setDados("Polde Inc.", "Polde", "José Müller","92.761.093/0004-10",
+                    "Praça dos Exploradores, n.282 - Pompéia - Rio de Janeiro - PE", "pol@de.com", "(87)8856-1723");
+            EMPRESAS.add(e3);
+        }
+        return EMPRESAS;
+    }
      
 }
