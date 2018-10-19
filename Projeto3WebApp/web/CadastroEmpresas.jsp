@@ -33,9 +33,9 @@
                                 String endereco = request.getParameter("endereco");
                                 String email = request.getParameter("email");
                                 String telefone = request.getParameter("telefone");
-                                Empresa c = new Empresa();
-                                c.setDados(nomeEmpresa, nomeFantasia, nomeProprietario, cnpj, endereco, email, telefone);
-                                Db.getEmpresas().add(c);
+                                Empresa e = new Empresa();
+                                e.setDados(nomeEmpresa, nomeFantasia, nomeProprietario, cnpj, endereco, email, telefone);
+                                Db.getEmpresas().add(e);
                                 response.sendRedirect("CadastroEmpresas.jsp");
                             }
 
@@ -86,7 +86,7 @@
                             int pos = Integer.parseInt(request.getParameter("alterarEmpresa"));
                             Empresa e = Db.getEmpresas().get(pos);
 
-                            if (request.getParameter("alterarContato") != null) {
+                            if (request.getParameter("btnAlterarContato") != null) {
                                 e.setDados(request.getParameter("nomeEmpresa"), request.getParameter("nomeFantasia"),
                                         request.getParameter("nomeProprietario"), request.getParameter("cnpj"), request.getParameter("endereco"),
                                         request.getParameter("email"), request.getParameter("telefone"));
@@ -138,10 +138,10 @@
                     <%}%>
                     <!--form e lógica para remoção de dados-->
                     <%if (request.getParameter("removerEmpresa") != null) {
-                            int pos = Integer.parseInt(request.getParameter("RemoverEmpresa"));
+                            int pos = Integer.parseInt(request.getParameter("removerEmpresa"));
                             Empresa e = Db.getEmpresas().get(pos);
 
-                            if (request.getParameter("removerEmpresa") != null) {
+                            if (request.getParameter("btnRemoverEmpresa") != null) {
 
                                 Db.getEmpresas().remove(e);
                                 response.sendRedirect("CadastroEmpresas.jsp");
@@ -182,7 +182,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="submit" name="RemoverEmpresa" value="Remover" style="width: 100%;"/>
+                                    <input type="submit" name="btnRemoverEmpresa" value="Remover" style="width: 100%;"/>
                                 </td>
                             </tr>
                         </table>
@@ -224,17 +224,16 @@
                             <%int i = Db.getEmpresas().indexOf(e);%>
                             <td>
                                 <form method="POST">
-                                    <a href="CadastroEmpresas.jsp?alterar=<%=i%>"><input type="button" value="Alterar"/></a>
-                                    <a href="CadastroEmpresas.jsp?remover=<%=i%>"><input type="button" value="Remover"/></a>
+                                    <a href="CadastroEmpresas.jsp?alterarEmpresa=<%=i%>"><input type="button" value="Alterar"/></a>
+                                    <a href="CadastroEmpresas.jsp?removerEmpresa=<%=i%>"><input type="button" value="Remover"/></a>
                                 </form>
                             </td>
                         </tr>
-                    </table>
                         <%}%>
-                        <br><!--Apenas para termos uma melhor visualização-->
+                        </table>
                         </div>
                         </div>
                         </div>
-        <%@include file="WEB-INF/jspf/rodape.jspf"%>
+                        <%@include file="WEB-INF/jspf/rodape.jspf"%>
                         </body>
                         </html>

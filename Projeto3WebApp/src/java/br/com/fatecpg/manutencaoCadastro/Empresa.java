@@ -24,7 +24,6 @@ public class Empresa {
      * @param nomeFantasia
      * @param nomeProprietario
      * @param cnpj
-     * @param Cnpj
      * @param endereco
      * @param email
      * @param telefone
