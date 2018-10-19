@@ -68,7 +68,7 @@ public class Db {
             
             Empresa e3 = new Empresa();
             e1.setDados("Polde Inc.", "Polde", "José Müller","92.761.093/0004-10",
-                    "Praça dos Exploradores, n.282 - Pompéia - Rio de Janeiro - PE", "pol@de.com", "(87)8856-1723");
+                    "Praça dos Exploradores, n.282 - Pompéia - Rio de Janeiro - PE", "pol@de.com", "(21)8856-1723");
             EMPRESAS.add(e3);
         }
         return EMPRESAS;

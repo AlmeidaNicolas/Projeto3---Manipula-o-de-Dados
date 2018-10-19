@@ -20,9 +20,8 @@
                 <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
                 <div style="border: solid 1px red;">
                     <!--form e lógica para inserção de dados das empresas-->
-                    <label>Cadastro de Empresas</label><br><br>
                     <%
-            if(request.getParameter("novoContato")!=null){
+            if(request.getParameter("novaEmpresa")!=null){
                 String nomeEmpresa = request.getParameter("nomeEmpresa");
                 String nomeFantasia = request.getParameter("nomeFantasia");
                 String nomeProprietario = request.getParameter("nomeProprietario");
@@ -32,47 +31,205 @@
                 String telefone = request.getParameter("telefone");
                 Empresa c = new Empresa();
                 c.setDados(nomeEmpresa, nomeFantasia, nomeProprietario, cnpj, endereco, email, telefone);
-                //Db.getContatos().add(c);
-                response.sendRedirect("home.jsp");
+                Db.getEmpresas().add(c);
+                response.sendRedirect("CadastroEmpresas.jsp");
             }
         %>
-            <form>
-                Nome da Empresa:<br/><input type="text" name="nomeEmpresa" required/><br/>
-                Nome Fantasia:<br/><input type="text" name="nomeFantasia" required/><br/>
-                Nome do Proprietário:<br/><input type="text" name="nomeProprietario" required/><br/>
-                CNPJ:<br/><input type="text" name="cnpj" required/><br/>
-                Endereço:<br/><input type="text" name="endereco" required/><br/>
-                E-mail:<br/><input type="text" name="email" required/><br/>
-                Telefone:<br/><input type="text" name="telefone" required/><br/>
-                <br/><input type="submit" name="novaEmpresa" value="Incluir">
-            </form>
+            <form method="POST">
+                            <p>ADICIONAR</p>
+                            <table>
+                                <tr>
+                                    <td><label>Nome da Empresa:</label></td>
+                                    <td><input type="text" name="nomeEmpresa" required autofocus placeholder="Ex: Grupo Wolksvagen"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome Fantasia:</label></td>
+                                    <td><input type="text" name="nomeFantasia" required autofocus placeholder="Ex: Wolkswagen"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome do Proprietário:</label></td>
+                                    <td><input type="text" name="nomeProprietario" required autofocus placeholder="Ex: Sergei Milstein"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CNPJ:</label></td>
+                                    <td><input type="text" name="cnpj" required placeholder="Ex: 765.093.243/8948-99"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Endereço:</label></td>
+                                    <td><input type="text" name="endereco" required autofocus placeholder="Ex: Rua João Guimarães Rosa"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><input type="email" name="email" required placeholder="Ex: maria@email.com"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><input type="text" name="telefone" required placeholder="Ex: (12)34567-8901"/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="btnAdicionar" value="Adicionar" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
             
             <!--form e lógica para alteração de dados-->
-            <%
-        int i = Integer.parseInt(request.getParameter("i"));
-        Empresa e = Db.getContatos().get(i);
-    %>
-    <body>
+            <body>
         <h1>Cadastro de Contatos</h1>
         <h2>Alterar</h2>
         <%
+            if(request.getParameter("alterarEmpresa") != null){
+                int pos = Integer.parseInt(request.getParameter("alterarEmpresa"));
+                Empresa e = Db.getEmpresas().get(pos);
+            
+            
             if(request.getParameter("alterarContato")!=null){
-                c.setNome(request.getParameter("nome"));
-                c.setEmail(request.getParameter("email"));
-                c.setTelefone(request.getParameter("telefone"));
-                Db.getContatos().set(i, c);
-                response.sendRedirect("home.jsp");
+                e.setDados(request.getParameter("nomeEmpresa"), request.getParameter("nomeFantasia"),
+                        request.getParameter("nomeProprietario"), request.getParameter("cnpj"), request.getParameter("endereco"),
+                        request.getParameter("email"), request.getParameter("telefone"));
+                
+                Db.getEmpresas().set(pos, e);
+                response.sendRedirect("CadastroEmpresas.jsp");
             }
         %>
-        <form>
-            Índice: <%= i%><br/><br/>
-            <input type="hidden" name="i" value="<%=i%>"/>
-            Nome:<br/><input type="text" name="nome" value="<%=c.getNome()%>" required/><br/>
-            E-mail:<br/><input type="text" name="email" value="<%=c.getEmail()%>" required/><br/>
-            Telefone:<br/><input type="text" name="telefone" value="<%=c.getTelefone()%>" required/><br/>
-            <br/><input type="submit" name="alterarContato" value="Alterar">
-        </form>
+        <form method="POST">
+                            <p>ALTERAR</p>
+                            <table>
+                                <tr>
+                                    <td><label>Nome da Empresa:</label></td>
+                                    <td><input type="text" name="nomeEmpresa" value="<%=e.getNomeEmpresa()%>" required autofocus placeholder="Ex: João Silva"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome Fantasia:</label></td>
+                                    <td><input type="text" name="nomeFantasia" value="<%=e.getNomeFantasia()%>" required autofocus placeholder="Ex: João Silva"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome do Proprietário:</label></td>
+                                    <td><input type="text" name="nomeProprietario" value="<%=e.getNomeProprietario()%>" required autofocus placeholder="Ex: João Silva"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CNPJ:</label></td>
+                                    <td><input type="text" name="cnpj" value="<%=e.getCnpj()%>" required placeholder="Ex: 123.456.789-12"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Endereço:</label></td>
+                                    <td><input type="text" name="endereco" value="<%=e.getNomeEmpresa()%>" required autofocus placeholder="Ex: João Silva"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><input type="text" name="email" value="<%=e.getEmail()%>" required placeholder="Ex: Joao@email.com"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><input type="text" name="telefone" value="<%=e.getTelefone()%>" required placeholder="Ex: (12)34567-8901"/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="AlterarEmpresa" value="Alterar" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+
+            <%}%>
+            <!--form e lógica para remoção de dados-->
+             <%if(request.getParameter("removerEmpresa") != null){
+                int pos = Integer.parseInt(request.getParameter("RemoverEmpresa"));
+                Empresa e = Db.getEmpresas().get(pos);
             
+            
+            if(request.getParameter("removerEmpresa")!=null){
+                
+                Db.getEmpresas().remove(e);
+                response.sendRedirect("CadastroEmpresas.jsp");
+            }
+            %>
+            
+            <form method="POST">
+                            <p>REMOVER</p>
+                            <table>
+                                <tr>
+                                    <td><label>Nome da Empresa:</label></td>
+                                    <td><label><%=e.getNomeEmpresa()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome Fantasia:</label></td>
+                                    <td><label><%=e.getNomeFantasia()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nome do Proprietário:</label></td>
+                                    <td><label><%=e.getNomeProprietario()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>CNPJ:</label></td>
+                                    <td><label><%=e.getCnpj()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Endereço:</label></td>
+                                    <td><label><%=e.getEndereco()%></label></td>
+                                </tr>                                
+                                <tr>
+                                    <td><label>E-mail:</label></td>
+                                    <td><label><%=e.getEmail()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Telefone:</label></td>
+                                    <td><label><%=e.getTelefone()%></label></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="RemoverEmpresa" value="Remover" style="width: 100%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                        <%}%>
+                    </div>
+                    <div class="bloco" id="tabela" style="border: solid 1px blue;">
+                        <label>Tabela para a exibição dos dados.</label>
+                        
+                        <table border="1">
+                            <tr>
+                                <th>Nome da Empresa</th>
+                                <th>Nome Fantasia</th>
+                                <th>Nome do Proprietário</th>
+                                <th>CNPJ</th>
+                                <th>Endereço</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <td>
+                                    <form>
+                                        <a href="CadastroEmpresas.jsp?adicionar=1"><input type="button" value="Adicionar outra"/></a>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%
+                                if(Db.getPessoa().isEmpty()){
+                                    %><td colspan="4"><label>Não existe nenhum cadastro de pessoas.</label></td><%
+                                }
+                            %>
+                            <%for(Empresa e: Db.getEmpresas()){%>
+                            <tr>
+                                <td><%= e.getNomeEmpresa()%></td>
+                                <td><%= e.getNomeFantasia()%></td>
+                                <td><%= e.getNomeProprietario()%></td>
+                                <td><%= e.getCnpj()%></td>
+                                <td><%= e.getEndereco()%></td>
+                                <td><%= e.getEmail()%></td>
+                                <td><%= e.getTelefone()%></td>
+                                <%int i = Db.getEmpresas().indexOf(e);%>
+                                <td>
+                                    <form method="POST">
+                                        <a href="CadastroEmpresas.jsp?alterar=<%=i%>"><input type="button" value="Alterar"/></a>
+                                        <a href="CadastroEmpresas.jsp?remover=<%=i%>"><input type="button" value="Remover"/></a>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%}%>
                     <div style="border: solid 1px blue;">
                         <label>Formulário para a entrada de dados.</label>
                     </div>
