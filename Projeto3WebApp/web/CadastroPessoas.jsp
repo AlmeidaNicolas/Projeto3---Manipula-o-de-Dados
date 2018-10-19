@@ -38,7 +38,7 @@
                             }
                         %>
                         <form method="POST">
-                            <p>ADICIONAR</p>
+                            <h3>ADICIONAR</h3>
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
@@ -57,8 +57,7 @@
                                     <td><input type="text" name="telefone" required placeholder="Ex: (12)34567-8901"/></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btnAdicionar" value="Adicionar" style="width: 100%;"/>
                                     </td>
                                 </tr>
@@ -81,7 +80,7 @@
                             }
                         %>
                         <form method="POST">
-                            <p>ALTERAR</p>
+                            <h3>ALTERAR</h3>
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
@@ -93,15 +92,14 @@
                                 </tr>
                                 <tr>
                                     <td><label>E-mail:</label></td>
-                                    <td><input type="text" name="email" value="<%=p.getEmail()%>" required placeholder="Ex: Joao@email.com"/></td>
+                                    <td><input type="email" name="email" value="<%=p.getEmail()%>" required placeholder="Ex: Joao@email.com"/></td>
                                 </tr>
                                 <tr>
                                     <td><label>Telefone:</label></td>
                                     <td><input type="text" name="telefone" value="<%=p.getTelefone()%>" required placeholder="Ex: (12)34567-8901"/></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btnAlterar" value="Alterar" style="width: 100%;"/>
                                     </td>
                                 </tr>
@@ -118,7 +116,7 @@
                             }
                         %>
                         <form method="POST">
-                            <p>REMOVER</p>
+                            <h3>REMOVER</h3>
                             <table>
                                 <tr>
                                     <td><label>Nome:</label></td>
@@ -137,8 +135,7 @@
                                     <td><label><%=p.getTelefone()%></label></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btnRemover" value="Remover" style="width: 100%;"/>
                                     </td>
                                 </tr>
@@ -146,15 +143,15 @@
                         </form>
                         <%}%>
                     </div>
-                    <div class="bloco" id="tabela" style="border: solid 1px blue;">
-                        <label>Tabela para a exibição dos dados.</label>
+                    <div class="bloco" id="divTabela">
+                        <h3>TABELA DE CADASTRO DE PESSOAS.</h3>
                         
-                        <table border="1">
+                        <table id="tabela">
                             <tr>
-                                <th>Nome</th>
+                                <th>NOME</th>
                                 <th>CPF</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
+                                <th>E-MAIL</th>
+                                <th>TELEFONE</th>
                                 <td>
                                     <form>
                                         <a href="CadastroPessoas.jsp?adicionar=1"><input type="button" value="Adicionar outro"/></a>
@@ -163,7 +160,7 @@
                             </tr>
                             <%
                                 if(Db.getPessoa().isEmpty()){
-                                    %><td colspan="4"><label>Não existe nenhum cadastro de pessoas.</label></td><%
+                                    %><td colspan="5"><label>Não existe nenhum cadastro de pessoas</label></td><%
                                 }
                             %>
                             <%for(Pessoa p: Db.getPessoa()){%>

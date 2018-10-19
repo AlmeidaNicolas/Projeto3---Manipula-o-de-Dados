@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/Estilo.css"/>
-        <title>Projeto 3 | Pessoas</title>
+        <title>Projeto 3 | Empresas</title>
     </head>
     <body>
         <div id="conteudo">
@@ -41,7 +41,7 @@
 
                     %>
                     <form method="POST">
-                        <p>ADICIONAR</p>
+                        <h3>ADICIONAR</h3>
                         <table>
                             <tr>
                                 <td><label>Nome da Empresa:</label></td>
@@ -72,8 +72,7 @@
                                 <td><input type="text" name="telefone" required placeholder="Ex: (12)34567-8901"/></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>
+                                <td colspan="2">
                                     <input type="submit" name="btnNovaEmpresa" value="Adicionar" style="width: 100%;"/>
                                 </td>
                             </tr>
@@ -96,7 +95,7 @@
                             }
                     %>
                     <form method="POST">
-                        <p>ALTERAR</p>
+                        <h3>ALTERAR</h3>
                         <table>
                             <tr>
                                 <td><label>Nome da Empresa:</label></td>
@@ -127,8 +126,7 @@
                                 <td><input type="text" name="telefone" value="<%=e.getTelefone()%>" required placeholder="Ex: (12)34567-8901"/></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>
+                                <td colspan="2">
                                     <input type="submit" name="AlterarEmpresa" value="Alterar" style="width: 100%;"/>
                                 </td>
                             </tr>
@@ -149,7 +147,7 @@
                     %>
 
                     <form method="POST">
-                        <p>REMOVER</p>
+                        <h3>REMOVER</h3>
                         <table>
                             <tr>
                                 <td><label>Nome da Empresa:</label></td>
@@ -180,8 +178,7 @@
                                 <td><label><%=e.getTelefone()%></label></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>
+                                <td colspan="2">
                                     <input type="submit" name="btnRemoverEmpresa" value="Remover" style="width: 100%;"/>
                                 </td>
                             </tr>
@@ -189,10 +186,10 @@
                     </form>
                     <%}%>
                 </div>
-                <div class="bloco" id="tabela" style="border: solid 1px blue;">
-                    <label>Tabela para a exibição dos dados.</label>
+                <div class="bloco" id="divTabela">
+                    <h3>TABELA DE CADASTRO DE EMPRESAS</h3>
 
-                    <table border="1">
+                    <table id="tabela" border="1">
                         <tr>
                             <th>Nome da Empresa</th>
                             <th>Nome Fantasia</th>
@@ -208,8 +205,8 @@
                             </td>
                         </tr>
                         <%
-                            if (Db.getPessoa().isEmpty()) {
-                        %><td colspan="4"><label>Não existe nenhum cadastro de pessoas.</label></td><%
+                            if (Db.getEmpresas().isEmpty()) {
+                        %><td colspan="8"><label>Não existe nenhum cadastro de empresas</label></td><%
                                     }
                         %>
                         <%for (Empresa e : Db.getEmpresas()) {%>

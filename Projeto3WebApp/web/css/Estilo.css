@@ -15,8 +15,17 @@ and open the template in the editor.
 html, body{
 	height: 100%
 }
-
-
+h3{
+    text-align: center;
+}
+.paragrafoHome{
+    text-align: justify;
+    width: 400px;
+    margin:50px auto;
+}
+p{
+    font-size: 20px;
+}
 #conteudo{
         /*border: solid 3px green;*/
 	min-height: 100%;
@@ -68,6 +77,7 @@ html, body{
 }
 #areaConteudo{
     width: 950px;
+    min-height: 400px;
     margin: 10px auto;
     padding: 20px 5px;
     border-radius: 0 25px;
@@ -78,12 +88,56 @@ html, body{
 .bloco{
     display: inline-block;
     vertical-align: top;
+    margin: 10px 5px;
 }
 #formulario{
     text-align: left;
+    /*border: solid 3px blue;*/
+}
+#divTabela{
+    text-align: left;
+    /*border: solid 3px blue;*/
 }
 #tabela{
-    text-align: left;
+    border: 3px solid #e6e600;
+    border-collapse: collapse;
+}
+
+#tabela td{
+    border: 2px solid #e6e600;
+    height: 25px;
+    padding: 5px;
+}
+#tabela th{
+    border: 2px solid #e6e600;
+    text-align: center;
+    padding: 0 10px;
+    height: 50px;
+    background-color: #4d4d4d;
+    color: white;
+}
+input{
+    width: 100%;
+    height: 25px;
+    padding: 5px 0;
+    border: 1px solid gray;
+    margin: 1px 0;
+}
+
+input[type="button"]:hover{
+    background-color: gray;
+    color:white;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-color: gray;
+    color:white;
+    cursor: pointer;
+}
+input[type="text"],[type="email"]{
+    padding: 5px;
+    width: 150px;
+    
 }
 #rodape{
     background-color: #1a1a1a;

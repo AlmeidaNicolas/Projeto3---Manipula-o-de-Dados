@@ -37,7 +37,7 @@
         
                         
                         <form method="POST">
-                            <p>ADICIONAR</p>
+                            <h3>ADICIONAR</h3>
                             <table>
                                 <tr>
                                     <td><label>Placa:</label></td>
@@ -56,7 +56,7 @@
                                     <td><input type="text" name="cor"></td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btAdicionar" value="Adicionar"> 
                                         
                                     </td>
@@ -82,7 +82,7 @@
                         %>
                         <form method="POST">
                             
-                            <p>ALTERAR</p>
+                            <h3>ALTERAR</h3>
                             <table>
                                 <tr>
                                     <td><label>Placa:</label></td>
@@ -101,7 +101,7 @@
                                     <td><input type="text" name="cor" value="<%=v.getCor()%>"></td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btAlterar" value="Alterar"> 
                                         
                                     </td>
@@ -121,14 +121,14 @@
                         %>
                         <form method="POST">
                             
-                            <p>REMOVER</p>
+                            <h3>REMOVER</h3>
                             
                             <input type="hidden" name="i" value="<%=i%>"/>
                             
                             <table>
                                 <tr>
                                     <td><label>Placa:</label></td>
-                                    <td><labe><%=v.getPlaca()%></labe></td>
+                                    <td><label><%=v.getPlaca()%></label></td>
                                 </tr>
                                 <tr>
                                     <td><label>Marca:</label></td>
@@ -143,7 +143,7 @@
                                     <td><label><%=v.getCor()%></label></td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <input type="submit" name="btRemover" value="Remover"> 
                                         
                                     </td>
@@ -153,20 +153,25 @@
                         <%}%>
                     </div>
                     
-                    <div class="bloco" id="tabela" style="border: solid 1px blue;">
-                        <label>Tabela para a exibição dos dados.</label>
-                        <table border="1">
+                    <div class="bloco" id="divTabela">
+                        <h3>TABELA DE CADASTRO DE VEÍCULOS</h3>
+                        <table id="tabela">
                             <tr>
-                                <th>Placa</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Cor</th>
+                                <th>PLACA</th>
+                                <th>MARCA</th>
+                                <th>MODELO</th>
+                                <th>COR</th>
                                 <td>
                                     <form>
                                         <a href="CadastroVeiculos.jsp?Adicionar=1"><input type="button" value="Adicionar outro"/></a>
                                     </form>
                                 </td>
                             </tr>
+                            <%
+                                if(Db.getVeiculo().isEmpty()){
+                                    %><td colspan="5"><label>Não existe nenhum cadastro de veículos</label></td><%
+                                }
+                            %>
                            <%for (Veiculo v: Db.getVeiculo()){%>
                            <tr>
                                <td><%= v.getPlaca()%></td>

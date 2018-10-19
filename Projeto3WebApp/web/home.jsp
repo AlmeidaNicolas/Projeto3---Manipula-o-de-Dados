@@ -16,10 +16,17 @@
         <div id="conteudo">
             <div id="principal">
                 <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-                <div style="border: solid 1px red;">
-                    <label>Conteúdo da home.</label>
-                    <div style="border: solid 1px blue;">
-                        <label>Apresentação do site.</label>
+                <div id="areaConteudo">
+                    
+                    <div id="bloco" class="paragrafoHome">
+                        <h1>Sobre o Projeto 3</h1>
+                        <p>Este projeto foi desenvolvido por Leonardo Santos, 
+                            Nicolas Almeida e Thyago Santos como uma atividade 
+                            para a aula de Programação Orientada a Objeto, da FATEC
+                        de Praia Grande.</p>
+                        <p>O Objetivo dessa atividade era criar um site que armazenasse
+                        cadastros de pessoas, empresas e veículos dentro de vetores.
+                        O usuário também poderia adicionar, alterar ou remover esses cadastros.</p>
                     </div>
                     <br><!--Apenas para termos uma melhor visualização-->
                 </div>

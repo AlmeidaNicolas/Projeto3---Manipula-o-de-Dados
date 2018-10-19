@@ -15,10 +15,10 @@ public class Db {
     private static final ArrayList<Pessoa> PESSOAS = new ArrayList<>();
     private static final ArrayList<Empresa> EMPRESAS = new ArrayList<>();
     private static final ArrayList<Veiculo> VEICULOS = new ArrayList<>();
-    private static Boolean firstTime = false;
+    private static Boolean firstTimeP=true,firstTimeE=true,firstTimeV=true;
     
     public static ArrayList<Pessoa> getPessoa(){
-        if(PESSOAS.isEmpty() && firstTime==false){
+        if(PESSOAS.isEmpty() && firstTimeP==true){
             Pessoa p1 = new Pessoa();
             p1.setDados("Leonardo", "213.312.231-32", "leonardo_santos_97@hotmail.com", "(13)98812-3212");
             PESSOAS.add(p1);
@@ -31,12 +31,12 @@ public class Db {
             p3.setDados("Thyago", "879.978.897-98", "thyago-Santos@gmail.com", "(13)99878-9878");
             PESSOAS.add(p3);
             
-            firstTime=true;
+            firstTimeP=false;
         }
         return PESSOAS;
     }
      public static ArrayList<Veiculo> getVeiculo(){
-        if(VEICULOS.isEmpty()){
+        if(VEICULOS.isEmpty() && firstTimeV==true){
             Veiculo v1 = new Veiculo();
             v1.setDados("QAA-333", "Fiat", "Urno", "Preto");
             VEICULOS.add(v1);
@@ -49,13 +49,13 @@ public class Db {
             v3.setDados("VQX-555", "Honda", "Civic", "Prata");
             VEICULOS.add(v3);
             
-            
+            firstTimeV=false;
         }
         return VEICULOS;
     }
      
     public static ArrayList<Empresa> getEmpresas(){
-        if(EMPRESAS.isEmpty()){
+        if(EMPRESAS.isEmpty() && firstTimeE==true){
             Empresa e1 = new Empresa();
             e1.setDados("Grupo Verdaz","Future Automóveis", "Mario Aquino","83.829.702/0032-88",
                     "Avenida Tomás Albuquerque, n.332 - Vila Nova - Porto de Galinhas - PE", "verdaz@future.com", "(87)8856-1723");
@@ -70,6 +70,8 @@ public class Db {
             e1.setDados("Polde Inc.", "Polde", "José Müller","92.761.093/0004-10",
                     "Praça dos Exploradores, n.282 - Pompéia - Rio de Janeiro - PE", "pol@de.com", "(21)8856-1723");
             EMPRESAS.add(e3);
+            
+            firstTimeE=false;
         }
         return EMPRESAS;
     }
