@@ -12,20 +12,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/Estilo.css"/>
-        <title>Projeto 3 | Empresas</title>
+        <title>Projeto 3 | Pessoas</title>
     </head>
     <body>
         <div id="conteudo">
             <div id="principal">
                 <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-                <div style="border: solid 1px red;">
+                <div id="areaConteudo">
+                    
+                    <div class="bloco" id="formulario">
                     <!--form e lógica para inserção de dados das empresas-->
                     <%
-                        if (request.getParameter("alterarEmpresa") != null) {
-                            int pos = Integer.parseInt(request.getParameter("alterarEmpresa"));
-                            Empresa e = Db.getEmpresas().get(pos);
+                        if (request.getParameter("novaEmpresa") != null) {
 
-                            if (request.getParameter("novaEmpresa") != null) {
+                            if (request.getParameter("btnNovaEmpresa") != null) {
                                 String nomeEmpresa = request.getParameter("nomeEmpresa");
                                 String nomeFantasia = request.getParameter("nomeFantasia");
                                 String nomeProprietario = request.getParameter("nomeProprietario");
@@ -74,15 +74,13 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="submit" name="novaEmpresa" value="Adicionar" style="width: 100%;"/>
+                                    <input type="submit" name="btnNovaEmpresa" value="Adicionar" style="width: 100%;"/>
                                 </td>
                             </tr>
                         </table>
                     </form>
                     <%}%>
                     <!--form e lógica para alteração de dados-->
-                    <h1>Cadastro de Contatos</h1>
-                    <h2>Alterar</h2>
                     <%
                         if (request.getParameter("alterarEmpresa") != null) {
                             int pos = Integer.parseInt(request.getParameter("alterarEmpresa"));
@@ -231,18 +229,12 @@
                                 </form>
                             </td>
                         </tr>
+                    </table>
                         <%}%>
-                        <div style="border: solid 1px blue;">
-                            <label>Formulário para a entrada de dados.</label>
-                        </div>
-                        <br><!--Apenas para termos uma melhor visualização-->
-                        <div style="border: solid 1px blue;">
-                            <label>Tabela para a exibição dos dados.</label>
-                        </div>
                         <br><!--Apenas para termos uma melhor visualização-->
                         </div>
                         </div>
                         </div>
-                        <%@include file="WEB-INF/jspf/rodape.jspf"%>
+        <%@include file="WEB-INF/jspf/rodape.jspf"%>
                         </body>
                         </html>
